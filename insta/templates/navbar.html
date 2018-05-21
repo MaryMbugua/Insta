@@ -51,7 +51,7 @@
                     </button>
                     
                     <a class="navbar-brand btny">Instagram|</a>
-                    <a href="#"><img src="./static/icons/ig1.png" alt="Instagram Icon" ></a>
+                    <a href="{% url 'landing' %}"><img src="/static/icons/ig1.png" alt="Instagram Icon" ></a>
                   </div>
               
                   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -59,10 +59,10 @@
                 
                    
                     <ul class="nav navbar-nav navbar-right">
-                                    <li><a href=""><img src="/static/icons/ex2.png" alt="Explore Icon" ></a></li>
+                                    <li><a href="{% url 'explore' %}"><img src="/static/icons/ex2.png" alt="Explore Icon" ></a></li>
                                     <li><a href=""><img src="/static/icons/ht.png" alt="Likes Icon" ></a>
                                     </li>
-                                    <li><a href=""><img src="/static/icons/id1.png" alt="Profile Icon" ></a>
+                                    <li><a href="{% url 'profile' %}"><img src="/static/icons/id1.png" alt="Profile Icon" ></a>
                                     </li>
                                 
                     </ul>
