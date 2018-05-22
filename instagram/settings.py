@@ -54,11 +54,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'instagram.urls'
-#login url redirect
-LOGIN_REDIRECT_URL = 'user_profile'
+# #login url redirect
+# LOGIN_REDIRECT_URL = 'user_profile'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 TEMPLATES = [
     {
@@ -137,3 +136,5 @@ STATICFILES_DIRS = [
     ]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
