@@ -55,8 +55,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'instagram.urls'
-# #login url redirect
-# LOGIN_REDIRECT_URL = 'user_profile'
+#login url redirect
+LOGIN_REDIRECT_URL = 'profile'
+
 
 
 
