@@ -18,6 +18,21 @@
         background-color: #FF008C;
         border-color: #FF008C;
     }
+    .that{
+        padding-left: 30%;
+        padding-right: 30%;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    hr{
+        background-color: #000000;
+    }
+    .jik{
+display: inline-block;
+width: 30%;
+    }
 </style>
     
 
@@ -56,20 +71,44 @@
 
 
    <!-- form for uploading pics -->
-   <div class="container">
-    <div class="cont"> 
-          <form  action="/" method="post" enctype="multipart/form-data">
+   <div class="container that">
+        <form  action="{% url 'profile'%}" method="post" enctype="multipart/form-data">
               {%csrf_token%}
           
               {% bootstrap_form form%}
-              <input type="submit" class="be btn btn-success btn " value="Post">
-            </form>
-    </div>
-
-</div>    
+              <input type="submit" class="be btn btn-success btn btns " value="Post">
+        </form>
+    </div>    
 <div class="container">
 <hr>
 </div>
+<!-- posts -->
+<div class="posty">
+    <h2>Posts</h2>
+</div>
+
+<div class="container">
+        
+          <!-- Looping through images   -->
+         
+        
+          
+          
+          
+           <!--Display images  -->
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 jik">
+                
+                <img src="" class="img-responsive" alt="Image">
+            </div>
+            
+    
+        
+          
+          <div class="row">
+            <h2 class="text-center">There No Posts yet by this user</h2>
+          </div>
+         
+        </div>       
 
 
 
