@@ -9,6 +9,8 @@ urlpatterns=[
     url(r'^profile/$',views.profile,name='profile'),
     url(r'^explore/$',views.explore,name='explore'),
     url(r'^profile/edit/$',views.edit,name='edit'),
+    url(r'^like/(?P<image_id>\d+)/$',views.like,name='like'),
+    url(r'^details/(?P<image_id>\d+)/$',views.details,name='details'),
 ]
 
 if settings.DEBUG:

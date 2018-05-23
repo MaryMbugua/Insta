@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .forms import NewPhotoForm,NewProfileForm
@@ -43,3 +43,23 @@ def edit(request):
         form = NewProfileForm()
 
     return render(request,'edit.html',{"form": form})
+
+def like(request, image_id):
+    post = Image.objects.get(id=image_id)
+    is_liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        is_liked = False
+    else:
+        post.likes.add(request.user)
+        is_liked = True
+    return redirect(details,post.id)
+def details(request,image_id):
+    post = Image.objects.get(id=image_id)
+    is_liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        is_liked = True
+    return render(request,'detail.html',{"is_liked":is_liked,"post":post})
+
+ 
+   
