@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .forms import NewPhotoForm,NewProfileForm
-from .models import Profile,Image
+from .forms import NewPhotoForm,NewProfileForm,CommentForm
+from .models import Profile,Image,Comment
 # Create your views here.
 def landing(request):
     images = Image.objects.all()
@@ -59,7 +59,26 @@ def details(request,image_id):
     is_liked = False
     if post.likes.filter(id=request.user.id).exists():
         is_liked = True
-    return render(request,'detail.html',{"is_liked":is_liked,"post":post})
+
+
+    comments= Comment.objects.filter(image=post)
+    return render(request,'detail.html',{"is_liked":is_liked,"post":post,"comments":comments})
+def comment(request, image_id):
+    current_user = request.user
+    post = Image.objects.get(id=image_id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment_form = form.save(commit=False)
+            comment_form.user = current_user
+            comment_form.image = post
+            comment_form.save()
+
+    else:
+        form = CommentForm()
+    return render(request, 'detail.html', {"form": form, "post": post})
+
 
  
    

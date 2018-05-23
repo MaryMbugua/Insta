@@ -11,6 +11,7 @@ urlpatterns=[
     url(r'^profile/edit/$',views.edit,name='edit'),
     url(r'^like/(?P<image_id>\d+)/$',views.like,name='like'),
     url(r'^details/(?P<image_id>\d+)/$',views.details,name='details'),
+     url(r'^comment/(?P<image_id>\d+)/$',views.comment,name='comment'),
 ]
 
 if settings.DEBUG:

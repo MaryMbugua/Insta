@@ -43,9 +43,26 @@
           
                       <div class="caption">
                         <h3>{{post.caption}}</h3>
-                        <p>comments go here</p>
+
+                
+                        <form  action="{%url 'comment' post.id %}" method="post" enctype="multipart/form-data">
+                            {%csrf_token%}
+                        
+                            {{ form.as_p }}
+                            <input type="submit" class="btn btn-success btn-lg btns" value="Post comment">
+                        </form>
+                 
+                        {% for comment in comments %}
+                        <div class="comment">
+                            <p>{{comment.user.username}}</p>
+                             <h5>{{ comment.comment}}</h5> 
+                            
+                        </div>
+                    {% empty %}
+                        <p>No comments here yet :(</p>
+                    {% endfor %}
                         <hr>
-                        <p><a href="#" class="btn btn-primary" role="button">add a comment</a> </p>
+                       
                       </div>
                     </div>
                   </div>
