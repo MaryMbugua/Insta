@@ -13,3 +13,7 @@ def profile(request):
 def explore(request):
 
     return render(request,'search.html')
+    
+def edit(request):
+
+    return render(request,'edit.html')

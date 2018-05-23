@@ -8,6 +8,7 @@ urlpatterns=[
     url(r'^$',views.landing,name='landing'),
     url(r'^profile/$',views.profile,name='profile'),
     url(r'^explore/$',views.explore,name='explore'),
+    url(r'^profile/edit/$',views.edit,name='edit'),
 ]
 
 if settings.DEBUG:
