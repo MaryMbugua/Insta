@@ -13,6 +13,10 @@ def landing(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
+    profile = Profile.objects.get(id=request.user.id)
+
+    images = Image.objects.filter(profile=request.user.id)
+
     profile1=Profile.objects.get(id=request.user.id)
     form = NewPhotoForm(request.POST,request.FILES)
     if request.method == 'POST': 
@@ -22,7 +26,7 @@ def profile(request):
             image.save()
     else:
         form = NewPhotoForm()
-    return render(request,'profile.html',{"form":form})
+    return render(request,'profile.html',{"form":form,"profile":profile,"images":images})
 
 @login_required(login_url='/accounts/login/')
 def explore(request):
@@ -81,4 +85,16 @@ def comment(request, image_id):
 
 
  
-   
+# def follow(request):
+#     follows = Profile.objects.get(id=request.user.id)
+#     user1 = User.objects.get(id=user_id)
+    
+#     is_follow = False
+#     if follows.following.filter(id=user_id).exists():
+#         follows.following.remove(user1)
+#         is_follow = False
+#     else:
+#         follows.following.add(user1)
+#         is_follow = True
+#     return redirect(profile)
+

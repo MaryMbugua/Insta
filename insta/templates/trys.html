@@ -207,21 +207,6 @@ def search_profiles(request):
     return render(request, 'search.html', {"found_profiles": found_profiles})
 
 
-def comment(request, image_id):
-    current_user = request.user
-    current_image = Image.objects.get(id=image_id)
-
-    if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
-        if form.is_valid():
-            comment_form = form.save(commit=False)
-            comment_form.user = current_user
-            comment_form.image = current_image
-            comment_form.save()
-
-    else:
-        form = CommentForm()
-    return render(request, 'comment.html', {"form": form, "current_image": current_image})
 
 
 def detail(request, image_id):
